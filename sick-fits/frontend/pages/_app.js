@@ -1,9 +1,9 @@
 import Page from '../components/Page';
 
-export default function MyApp() {
+export default function MyApp({ Component, pageProps }) {
   return (
     <Page>
-      <p>MyApp</p>
+      <Component {...pageProps} />
     </Page>
   );
 }
