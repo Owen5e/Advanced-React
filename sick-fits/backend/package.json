@@ -5,8 +5,8 @@
   "author": "Wes Bos",
   "license": "MIT",
   "scripts": {
-    "dev": "keystone-next",
-    "seed-data": "keystone-next --seed-data",
+    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider keystone-next",
+    "seed-data": "cross-env NODE_OPTIONS=--openssl-legacy-provider keystone-next --seed-data",
     "postinstall": "patch-package"
   },
   "eslintConfig": {
@@ -55,6 +55,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^10.0.0",
     "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-typescript": "^12.0.0",
