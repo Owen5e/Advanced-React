@@ -14,7 +14,7 @@ export const ProductImage = list({
   fields: {
     image: cloudinaryImage({
       cloudinary,
-      label: "source",
+      label: "Source",
     }),
     altText: text(),
     product: relationship({ ref: "Product.photo" }),
