@@ -44,7 +44,6 @@ export default function UpdateProduct({ id }) {
   const { data, loading, error } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id },
   });
-  if (loading) return <p>Loading...</p>;
   // 2. We need to get the mutation to update the product
   const [
     updateProduct,
@@ -56,7 +55,8 @@ export default function UpdateProduct({ id }) {
     },
   });
   //   2.5 We need to handle the form state
-  const { inputs, handleChange, resetForm, clearForm } = useForm(data.Product);
+  const { inputs, handleChange, resetForm, clearForm } = useForm(data?.Product);
+  if (loading) return <p>Loading...</p>;
 
   // 3. We need to fill the form with the existing product
   return (
@@ -65,6 +65,16 @@ export default function UpdateProduct({ id }) {
         e.preventDefault();
         // submit the input fields to the backend
         // Todo: handle submit
+        const res = updateProduct({
+          variables: {
+            id,
+            data: {
+              name: inputs.name,
+              description: inputs.description,
+              price: inputs.price,
+            },
+          },
+        });
         // const res = await createProduct();
         // clearForm();
         // // go to that product's page
