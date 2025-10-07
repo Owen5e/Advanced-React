@@ -68,11 +68,9 @@ export default function UpdateProduct({ id }) {
         const res = updateProduct({
           variables: {
             id,
-            data: {
-              name: inputs.name,
-              description: inputs.description,
-              price: inputs.price,
-            },
+            name: inputs.name,
+            description: inputs.description,
+            price: inputs.price,
           },
         });
         console.log(res);
