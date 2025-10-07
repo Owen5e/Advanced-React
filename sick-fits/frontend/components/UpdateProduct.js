@@ -23,9 +23,9 @@ const SINGLE_PRODUCT_QUERY = gql`
 const UPDATE_PRODUCT_MUTATION = gql`
   mutation UPDATE_PRODUCT_MUTATION(
     $id: ID!
-    $name: String!
-    $description: String!
-    $price: Int!
+    $name: String
+    $description: String
+    $price: Int
   ) {
     updateProduct(
       id: $id
@@ -75,6 +75,7 @@ export default function UpdateProduct({ id }) {
             },
           },
         });
+        console.log(res);
         // const res = await createProduct();
         // clearForm();
         // // go to that product's page
@@ -85,9 +86,6 @@ export default function UpdateProduct({ id }) {
     >
       <DisplayError error={error || updateError} />
       <fieldset disabled={updateLoading} aria-busy={updateLoading}>
-        {error && <p>Error: {error.message}</p>}
-        {data && <p>Success! Your product has been created</p>}
-
         <label htmlFor="name">
           Name
           <input
