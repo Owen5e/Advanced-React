@@ -11,7 +11,7 @@ const DELETE_PRODUCT_MUTAATION = gql`
 `;
 
 function update(cache, payload) {
-  // this is a cruddy way to remove the item from the cache
+  // this is a way to remove the item from the cache
   console.log(payload);
   console.log('running the update function after delete');
   cache.evict(cache.identify(payload.data.deleteProduct));
