@@ -6,6 +6,5 @@ export default function Pagination({ page }) {
     <Head>
       <title>Sick fits - page {page} of ___</title>
     </Head>
-    ;
   </PaginationStyles>;
 }
