@@ -53,6 +53,7 @@ export default function SignIn() {
             value={inputs.email}
             onChange={handleChange}
           />
+          <br />
         </label>
         <label htmlFor="password">
           Password
