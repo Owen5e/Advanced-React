@@ -9,7 +9,7 @@ const transport = createTransport({
   },
 });
 
-function makeANiceEmail(text: string) {
+function makeANiceEmail(text: string): string {
   return `
     <div style="
       border:1px solid black;
@@ -19,8 +19,31 @@ function makeANiceEmail(text: string) {
     ">
       <h2>Hello there!</h2>
       <p>${text}</p>
+      <p>love, Owen</p>
     </div>
   `;
 }
 
-export { transport, makeANiceEmail };
+interface MailResponse {
+  message: string;
+}
+
+export async function sendPasswordResetEmail(
+  resetToken: string,
+  toEmail: string
+): Promise<void> {
+  // email the user a token
+  const info = (await transport.sendMail({
+    to: toEmail,
+    from: "oladapo2011@gmail.com",
+    subject: "Your Password Reset Token",
+    html: makeANiceEmail(
+      `Your password reset token is here!
+      <a href="${process.env.FRONTEND_URL}/reset?token=${resetToken}">
+        Click here to reset
+      </a>
+    `
+    ),
+  })) as MailResponse;
+  console.log(info);
+}
