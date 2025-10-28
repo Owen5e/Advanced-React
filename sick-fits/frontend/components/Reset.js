@@ -44,7 +44,7 @@ export default function Reset({ token }) {
     console.log(res);
     resetForm();
 
-    // Send the email and password to graphqlAPI
+    // Send the email and password to the graphqlAPI
   }
 
   return (
