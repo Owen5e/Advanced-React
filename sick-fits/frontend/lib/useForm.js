@@ -12,7 +12,8 @@ export default function useForm(initial = {}) {
   function handleChange(e) {
     let { name, value, type } = e.target;
     if (type === 'number') {
-      value = parseInt(value);
+      // Handle empty string and invalid numbers to prevent NaN
+      value = value === '' ? '' : parseInt(value) || 0;
     }
     if (type === 'file') {
       [value] = e.target.files;

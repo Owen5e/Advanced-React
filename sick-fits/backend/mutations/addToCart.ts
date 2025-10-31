@@ -20,7 +20,7 @@ export default async function addToCart(
       user: { id: sesh.itemId },
       product: { id: productId },
     },
-    resolveField: "id, quantity",
+    resolveFields: "id,quantity",
   });
   const [existingCartItem] = allCartItems;
   if (existingCartItem) {
